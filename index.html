@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!--Meta Tags-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sweet Burguer - Your Online Food Delivery & Pickup Service">
+    <meta property="og:description" content="Discover the best food delivery and pickup services in your area.">
+    <meta property="og:url" content="https://www.cadapio.com">
+    <meta property="og:image" content="https://www.cadapio.com/assets/img/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sweet Burguer - Your Online Food Delivery & Pickup Service">
+    <meta name="twitter:description" content="Discover the best food delivery and pickup services in your area.">
+    <meta name="twitter:image" content="https://www.cadapio.com/assets/img/logo.png">
+    <meta name="description" content="Discover the best food delivery and pickup services in your area.">
+    <meta name="theme-color" content="#000000">
+    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"  href="./styles/output.css">
+    <title>Sweet Burguer</title>
+</head>
+
+<body>
+    <!--Header-->
+    <header class="w-full h-[720px] bg-home bg-cover bg-center">
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <img src="./assets/hamb-1.png" alt="img_hamb" class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200">
+            <h1 class="text-5xl text-zinc-50">Sweet Buguer</h1>
+            <span class="text-2xl text-zinc-50 mt-4">Visconde de Souza Franco, Umarizal - PA</span>
+            <div class="bg-red-700 mt-4 px-6 py-4 rounded-sm" id="date-span">
+                <span class="text-2xl text-white">Seg á Sábado - 18:00 ás 22:00 horas</span>
+            </div>
+        </div>
+    </header>
+
+    <h2 class="text-2xl md:text-5xl font-bold text-center mt-8 mb-6 text-zinc-950">Conheça o Nosso Menu</h2>
+
+    <!--Inico do menu-->
+    <div id="menu">
+        <main class=" w-full h-auto grid grid-cols-1 md:grid-cols-2 grid-rows-6 gap-6 md:gap-0 px-6 mb-16 md:gap-10 mt-20">
+
+            <!--Item-->
+            <div class="flex gap-2">
+                <img src="./assets/hamb-2.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                <div>
+                    <h3 class="text-2xl text-yellow-600">Hamburguer Smash Crush</h3>
+                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
+                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                        <p class="font-bold">R$ 18,10</p>
+                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                        data-name="Hamburguer Smansh Crush"
+                        data-price="8.90"
+                        >
+                            <i class="fas fa-plus text-white"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <img src="./assets/hamb-2.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                <div>
+                    <h3 class="text-2xl text-yellow-600">Hamburguer Sweet</h3>
+                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
+                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                        <p class="font-bold">R$ 28,90</p>
+                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                        data-name="Hamburguer Sweet"
+                        data-price="28.90"
+                        >
+                            <i class="fas fa-plus text-white"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <img src="./assets/hamb-1.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                <div>
+                    <h3 class="text-2xl text-yellow-600">Hamburger Classic</h3>
+                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
+                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                        <p class="font-bold">R$ 22,10</p>
+                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                        data-name="Hamburguer Classic"
+                        data-price="22.10"
+                        >
+                            <i class="fas fa-plus text-white"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <img src="./assets/hamb-5.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                <div>
+                    <h3 class="text-2xl text-yellow-600">Hamburguer Wropper</h3>
+                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
+                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                        <p class="font-bold">R$ 19,60</p>
+                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                        data-name="Hamburguer Wropper"
+                        data-price="19.60"
+                        >
+                            <i class="fas fa-plus text-white"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <img src="./assets//hamb-4.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                <div>
+                    <h3 class="text-2xl text-yellow-600">Hamburguer X-Double</h3>
+                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
+                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                        <p class="font-bold">R$ 23,10</p>
+                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                        data-name="Hamburguer X-Double"
+                        data-price="23.10"
+                        >
+                            <i class="fas fa-plus text-white"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <img src="./assets/hamb-7.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                <div>
+                    <h3 class="text-2xl text-yellow-600">Hamburguer X-Wrooper</h3>
+                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
+                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                        <p class="font-bold">R$ 24,10</p>
+                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                        data-name="Hamburguer Loopdall"
+                        data-price="24.10"
+                        >
+                            <i class="fas fa-plus text-white"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!--Seção de bebidas-->
+
+        <div class="mx-auto  max-w-7xl px-2 my-2">
+            <h2 class="text-6xl text-zinc-950 text-center font-bold mt-12">Bebidas</h2>
+        </div>
+        <!--Grid Bebidas-->
+
+        <div id="menu">
+            <main class="w-full h-auto grid grid-cols-1 md:grid-cols-2 grid-rows-6 gap-6 md:gap-0 px-2 mb-16 md:gap-10 mt-20">
+                
+                <div class="flex gap-2">
+                    <img src="./assets/refri-2.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                    <div class="w-full">
+                        <h3 class="text-2xl text-yellow-600">Refri Guaraná</h3>
+                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
+                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                            <p class="font-bold">R$6,10</p>
+                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                            data-name="Refri Gurana"
+                            data-price="6.10"
+                            >
+                                <i class="fas fa-plus text-white"></i>
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 w-full">
+                    <img src="./assets/refri-1.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                    <div class="w-full">
+                        <h3 class="text-2xl text-yellow-600">Refri Cola</h3>
+                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
+                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                            <p class="font-bold">R$ 5,10</p>
+                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                            data-name="Refri Cola"
+                            data-price="5.10"
+                            >
+                                <i class="fas fa-plus text-white"></i>
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <img src="./assets/refri3.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                    <div class="w-full">
+                        <h3 class="text-2xl text-yellow-600">Refri Pepsi</h3>
+                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
+                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                            <p class="font-bold">R$7,40</p>
+                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                            data-name="Refri Pespi"
+                            data-price="7.40"
+                            >
+                                <i class="fas fa-plus text-white"></i>
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <img src="./assets/suco1.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                    <div class="w-full">
+                        <h3 class="text-2xl text-yellow-600">Suco Natural</h3>
+                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
+                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                            <p class="font-bold">R$6,00</p>
+                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                            data-name="Suco Natural"
+                            data-price="6.00"
+                            >
+                                <i class="fas fa-plus text-white"></i>
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <img src="./assets/suco2.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                    <div class="w-full">
+                        <h3 class="text-2xl text-yellow-600">Suco Arficial</h3>
+                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
+                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                            <p class="font-bold">R$4,20</p>
+                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                            data-name="Suco Arficial"
+                            data-price="4.20"
+                            >
+                                <i class="fas fa-plus text-white"></i>
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <img src="./assets/Refri4.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
+                    <div class="w-full">
+                        <h3 class="text-2xl text-yellow-600">Ernegético</h3>
+                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
+                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
+                            <p class="font-bold">R$10,00</p>
+                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
+                            data-name="Ernegético"
+                            data-price="10.00"
+                            >
+                                <i class="fas fa-plus text-white"></i>
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!--Modal-->
+    <div id="cart-modal" class="bg-black/50  h-full w-full fixed top-0 left-0 z-[99] hidden items-center justify-center">
+        <div class="bg-white rounded-lg p-5 min-w-[90%] md:min-w-[600px]">
+            <h2 class="text-center font-bold text-2xl mb-2">Meu Carrinho</h2>
+            <div id="cart-items-container" class="flez justify-between m-2 flex-col"></div>
+            <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+            <p class="font-bold mt-4">Endereço de Entrega</p>
+            <input type="text " placeholder="Digite o Seu Endereço" id="address" class="w-full border-2 mt-2 rounded-lg p-1">
+            <p class="text-red-900 hidden" id="address-warn">Digite o Seu Endereço Completo</p>
+            <div class="flex items-center justify-between mt-4 w-full gap-2">
+                <button class="w-full bg-zinc-900 text-white rounded-lg py-2 px-4" id="checkout-btn">Finalizar Compra</button>
+                <button class="w-full bg-transparent text-black rounded-lg py-2 px-4" id="close-modal-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <!--Footer-->
+    <footer class="flex justify-center items-center bg-red-600 w-full py-2 fixed bottom-0 z-40 ">
+        <button class="flex items-center font-bold gap-4 text-white" id="cart-btn">
+            (<span id="cart-count">0</span>)
+            Veja o Carrinho
+            <i class="fas fa-shopping-cart text-lg text-white"></i>
+        </button>
+    </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
