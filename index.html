@@ -68,11 +68,8 @@
         <a href="#home" class="text-lg hover:text-yellow-500 transition-colors duration-300">Home</a>
         <a href="#hamburgers" class="text-lg hover:text-yellow-500 transition-colors duration-300">Hamburgers</a>
         <a href="#drinks" class="text-lg hover:text-yellow-500 transition-colors duration-300">Bebidas</a>
-        <button class="flex items-center font-bold gap-3 bg-yellow-500 text-zinc-900 px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300" id="cart-btn-mobile">
-            <i class="fas fa-shopping-cart text-lg"></i>
-            (<span id="cart-count-mobile">0</span>) Carrinho
-        </button>
     </div>
+
 
     </nav>
 
@@ -365,6 +362,13 @@
                 </div>
             </main>
         </div>
+    </div>
+   
+    <div class="fixed bottom-4 right-4 flex md:hidden">
+        <button class="flex items-center font-bold gap-3 bg-yellow-500 text-zinc-900 px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 transition" id="cart-btn2">
+            <i class="fas fa-shopping-cart text-lg"></i>
+            (<span id="cart-count2">0</span>) Carrinho
+        </button>
     </div>
     <!--Modal-->
     <div id="cart-modal" class="bg-black/50 h-full w-full fixed top-0 left-0 z-[99] hidden items-center justify-center">

@@ -2,21 +2,29 @@
 
 const menu = document.getElementById('menu');
 const cartBtn = document.getElementById('cart-btn');
+const cartMobile = document.getElementById('cart-btn2');
 const cartModal = document.getElementById('cart-modal');
 const cartItemsContainer = document.getElementById("cart-items-container");
 const cartTotal = document.getElementById('cart-total');
 const checkoutBtn = document.getElementById('checkout-btn');
 const closeModalBtn = document.getElementById('close-modal-btn');
 const cartCounter = document.getElementById('cart-count');
+const cartCounteMobile = document.getElementById('cart-count2');
 const adressInput = document.getElementById('address');
 const adressWarn = document.getElementById('address-warn');
- 
+
 
 let cart = [
 
 ];
 //Abrir o Modal do Carrinho
 cartBtn.addEventListener('click', function () {
+    updateCartModal();
+    cartModal.style.display = 'flex';
+    updateCartModal();
+});
+
+cartMobile.addEventListener('click', function () {
     updateCartModal();
     cartModal.style.display = 'flex';
     updateCartModal();
@@ -95,6 +103,7 @@ function updateCartModal(){
         currency: "BRL"
     });
     cartCounter.innerHTML = cart.length;
+    cartCounteMobile.innerHTML = cart.length;
 }
 
 // Remover Produtos do Carrinho
