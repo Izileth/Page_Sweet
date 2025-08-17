@@ -5,445 +5,706 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/svg+xml" href="https://sweet-burger-alpha.vercel.app/assets/hamb-1.png" />
+    <link rel="icon" type="image/svg+xml" href="https://i.pinimg.com/736x/ae/fe/8a/aefe8a9f8a2ada73fc77002b0d035642.jpg" />
 
     <!--Meta Tags-->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Sweet Burger - Your Online Food Delivery & Pickup Service">
+    <meta property="og:title" content="The House - Your Online Food Delivery & Pickup Service">
     <meta property="og:description" content="Deliciosos hamburgers artesanais e bebidas refrescantes com entrega rápida.">
     <meta property="og:url" content="http://127.0.0.1:5500/assets/hamb-1.png">
     <meta property="og:image" content="http://127.0.0.1:5500/assets/hamb-1.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sweet Burger - Your Online Food Delivery & Pickup Service">
+    <meta name="twitter:title" content="The House - Your Online Food Delivery & Pickup Service">
     <meta name="twitter:description" content="Deliciosos hamburgers artesanais e bebidas refrescantes com entrega rápida.">
     <meta name="twitter:image" content="https://www.sweetburger.com/assets/img/logo.png">
     <meta name="description" content="Deliciosos hamburgers artesanais e bebidas refrescantes com entrega rápida.">
     <meta name="theme-color" content="#000000">
     
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet"  href="./styles/output.css">
-    
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet"  href="./styles/output.css">
-    <title>Sweet Burguer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#FF6B35',
+                        'accent-dark': '#E55A2B'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <title>The House</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #FF6B35, #E55A2B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .accent-glow {
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+        .remove-from-cart-btn{
+            background: transparent;
+            border: none;
+            color: #FF6B35;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-white text-gray-900 font-inter">
     
-    <nav class="w-full bg-zinc-900 text-white fixed top-0 z-50 shadow-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            
-            <!-- Logo e Nome -->
-            <div class="flex items-center gap-3">
-                <img src="./assets/hamb-1.png" alt="Sweet Burger Logo" class="w-16 h-16 object-cover rounded-full shadow-md">
-                <span class="text-2xl font-bold text-yellow-500 tracking-wide">Sweet Burger</span>
-            </div>
-    
-            <!-- Menu Desktop -->
-            <ul class="hidden md:flex gap-8 text-lg font-medium">
-                <li><a href="#home" class="hover:text-yellow-500 transition-colors">Home</a></li>
-                <li><a href="#hamburgers" class="hover:text-yellow-500 transition-colors">Hamburgers</a></li>
-                <li><a href="#drinks" class="hover:text-yellow-500 transition-colors">Bebidas</a></li>
-                <li>
-                    <button class="flex items-center font-bold gap-3 bg-yellow-500 text-zinc-900 px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 transition" id="cart-btn">
-                        <i class="fas fa-shopping-cart text-lg"></i>
-                        (<span id="cart-count">0</span>) Carrinho
-                    </button>
-                </li>
-            </ul>
-    
-            <!-- Botão Mobile -->
-            <button id="menu-toggle" class="md:hidden text-2xl">
-                <i class="fas fa-bars"></i>
-            </button>
-    
-        </div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center">
+                        <i class="fas fa-hamburger text-accent text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-black">The House</span>
+                </div>
         
-        <!-- Menu Mobile -->
-    <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center gap-6 bg-zinc-900 py-6 shadow-lg transition-all duration-300 ease-in-out transform -translate-y-full">
-        <a href="#home" class="text-lg hover:text-yellow-500 transition-colors duration-300">Home</a>
-        <a href="#hamburgers" class="text-lg hover:text-yellow-500 transition-colors duration-300">Hamburgers</a>
-        <a href="#drinks" class="text-lg hover:text-yellow-500 transition-colors duration-300">Bebidas</a>
-    </div>
-
-
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <li><a href="#home" class="text-gray-700 hover:text-accent transition-colors">Home</a></li>
+                    <li><a href="#hamburgers" class="text-gray-700 hover:text-accent transition-colors">Menu</a></li>
+                    <li><a href="#drinks" class="text-gray-700 hover:text-accent transition-colors">Bebidas</a></li>
+                    <li><a href="#about" class="text-gray-700 hover:text-accent transition-colors">Sobre</a></li>
+                    <li>
+                        <button class="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors" id="cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span><span id="cart-count">0</span></span>
+                        </button>
+                    </li>
+                </ul>
+        
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" class="md:hidden p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+        
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-gray-100">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="text-gray-700 hover:text-accent transition-colors py-2">Inicio</a>
+                    <a href="#hamburgers" class="text-gray-700 hover:text-accent transition-colors py-2">Menu</a>
+                    <a href="#drinks" class="text-gray-700 hover:text-accent transition-colors py-2">Bebidas</a>
+                    <a href="#about" class="text-gray-700 hover:text-accent transition-colors py-2">Sobre</a>
+                </div>
+            </div>
+        </div>
     </nav>
 
-    <!--Header-->
-    <header class="w-full h-[720px] bg-home bg-cover bg-center">
-        <div class="w-full h-full flex flex-col justify-center items-center">
-            <img src="./assets/hamb-1.png" alt="img_hamb" class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200">
-            <h1 class="text-5xl text-zinc-50">Sweet Buguer</h1>
-            <span class="text-lg text-zinc-50 mt-4 text-center sm:text-2xl "">Visconde de Souza Franco, Umarizal - PA</span>
-            <div class="bg-red-700 mt-4 px-6 py-4 rounded-lg shadow-lg" id="date-span">
-                <span class="text-xl text-white">Seg a Sábado - 18:00 às 22:00 horas</span>
+    <!-- Hero Section -->
+    <header class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        
+        <div class="text-center max-w-4xl mx-auto px-6 relative z-10">
+            <div class="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-8 accent-glow">
+                <i class="fas fa-hamburger text-white text-3xl"></i>
             </div>
-            <div class="flex gap-4 mt-8">
-                <a href="#hamburgers" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors shadow-lg">
-                    Ver Cardápio
+            
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
+                The<br><span class="text-gradient">House</span>
+            </h1>
+            
+            <p class="text-xl text-gray-300 mb-4 max-w-2xl mx-auto">
+                Hambúrgueres artesanais premium com ingredientes selecionados
+            </p>
+            
+            <div class="flex items-center justify-center text-gray-400 mb-8 space-x-2">
+                <i class="fas fa-map-marker-alt text-accent"></i>
+                <span class="text-lg">Visconde de Souza Franco, Umarizal - PA</span>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 mb-8 max-w-md mx-auto" id="date-span">
+                <div class="flex items-center justify-center space-x-3 text-white">
+                    <i class="fas fa-clock text-accent"></i>
+                    <span class="font-medium">Seg - Sáb: 18:00 às 22:00</span>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#hamburgers" class="bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-full font-medium transition-colors inline-flex items-center justify-center space-x-2">
+                    <span>Ver Cardápio</span>
+                    <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="tel:+5591999999999" class="bg-white text-zinc-900 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors shadow-lg">
-                    <i class="fas fa-phone-alt mr-2"></i> Ligar Agora
+                <a href="tel:+5591999999999" class="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-8 py-4 rounded-full font-medium transition-colors inline-flex items-center justify-center space-x-2">
+                    <i class="fas fa-phone"></i>
+                    <span>Ligar Agora</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div id="home" class="bg-zinc-900 text-white py-6">
-        <div class="container mx-auto text-center">
-    
-            <!-- Botão do Menu Mobile -->
-            <button id="toggle-filter" class="md:hidden px-4 py-2 bg-yellow-500 text-zinc-900 font-bold rounded-lg shadow-md hover:bg-yellow-600 transition">
-                Filtrar <i class="fas fa-filter"></i>
-            </button>
-    
-            <!-- Botões de Filtro -->
-            <div id="filter-menu" class="hidden md:flex justify-center gap-6 mt-8 mb-6 flex-wrap">
-                <button class="filter-btn px-4 py-2 bg-yellow-500 text-zinc-900 font-bold rounded-lg shadow-md hover:bg-yellow-600 transition active" data-category="all">Todos</button>
-                <button class="filter-btn px-4 py-2 bg-yellow-500 text-zinc-900 font-bold rounded-lg shadow-md hover:bg-yellow-600 transition" data-category="delivery">Entrega</button>
-                <button class="filter-btn px-4 py-2 bg-yellow-500 text-zinc-900 font-bold rounded-lg shadow-md hover:bg-yellow-600 transition" data-category="payment">Pagamento</button>
-                <button class="filter-btn px-4 py-2 bg-yellow-500 text-zinc-900 font-bold rounded-lg shadow-md hover:bg-yellow-600 transition" data-category="location">Localização</button>
+    <!-- Features Section -->
+    <div id="home" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Mobile Filter Toggle -->
+            <div class="text-center mb-12">
+                <button id="toggle-filter" class="md:hidden bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">
+                    <i class="fas fa-filter mr-2"></i>Filtrar
+                </button>
             </div>
     
-            <!-- Info Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                <div class="info-item flex flex-col items-center opacity-100 transition-opacity duration-500" data-category="delivery">
-                    <i class="fas fa-motorcycle text-3xl mb-2"></i>
-                    <p>Entrega em até 40 minutos</p>
+            <!-- Filter Buttons -->
+            <div id="filter-menu" class="hidden md:flex justify-center mb-16">
+                <div class="flex space-x-2 bg-white rounded-full p-2 shadow-lg">
+                    <button class="filter-btn px-6 py-3 rounded-full font-medium transition-all bg-black text-white" data-category="all">Todos</button>
+                    <button class="filter-btn px-6 py-3 rounded-full font-medium transition-all hover:bg-gray-100" data-category="delivery">Entrega</button>
+                    <button class="filter-btn px-6 py-3 rounded-full font-medium transition-all hover:bg-gray-100" data-category="payment">Pagamento</button>
+                    <button class="filter-btn px-6 py-3 rounded-full font-medium transition-all hover:bg-gray-100" data-category="location">Localização</button>
                 </div>
-                <div class="info-item flex flex-col items-center opacity-100 transition-opacity duration-500" data-category="payment">
-                    <i class="fas fa-credit-card text-3xl mb-2"></i>
-                    <p>Pagamento na entrega</p>
+            </div>
+    
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="info-item text-center p-8 bg-white rounded-2xl shadow-sm card-hover" data-category="delivery">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-motorcycle text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Entrega Rápida</h3>
+                    <p class="text-gray-600">Receba seu pedido em até 40 minutos na sua porta</p>
                 </div>
-                <div class="info-item flex flex-col items-center opacity-100 transition-opacity duration-500" data-category="location">
-                    <i class="fas fa-map-marker-alt text-3xl mb-2"></i>
-                    <p>Atendemos toda a cidade</p>
+                
+                <div class="info-item text-center p-8 bg-white rounded-2xl shadow-sm card-hover" data-category="payment">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-credit-card text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Pagamento Fácil</h3>
+                    <p class="text-gray-600">Pague na entrega com dinheiro, cartão ou PIX</p>
+                </div>
+                
+                <div class="info-item text-center p-8 bg-white rounded-2xl shadow-sm card-hover" data-category="location">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Cobertura Total</h3>
+                    <p class="text-gray-600">Atendemos toda a região metropolitana</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <h2 class="text-2xl md:text-5xl font-bold text-center mt-8 mb-6 text-zinc-950">Conheça o Nosso Menu</h2>
-
-    <!--Inico do menu-->
-    <div class="w-full" id="menu">
-        <main id="hamburgers"" class="w-full h-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 px-6 mb-16 mt-20 max-w-screen-xl mx-auto">
-
-            <!--Item-->
-            <div class="flex gap-2 ">
-                <img src="./assets/hamb-2.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                <div>
-                    <h3 class="text-2xl text-yellow-600">Hamburguer Smash Crush</h3>
-                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
-                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                        <p class="font-bold">R$ 18,10</p>
-                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                        data-name="Hamburguer Smansh Crush"
-                        data-price="8.90"
-                        >
-                            <i class="fas fa-plus text-white"></i>
-                            Adicionar
-                        </button>
-                    </div>
-                </div>
+    <!-- Menu Section -->
+    <div class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Nosso <span class="text-gradient">Menu</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Hambúrgueres artesanais preparados com ingredientes frescos e selecionados
+                </p>
             </div>
 
-            <div class="flex gap-2">
-                <img src="./assets/hamb-2.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                <div>
-                    <h3 class="text-2xl text-yellow-600">Hamburguer Sweet</h3>
-                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
-                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                        <p class="font-bold">R$ 28,90</p>
-                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                        data-name="Hamburguer Sweet"
-                        data-price="28.90"
-                        >
-                            <i class="fas fa-plus text-white"></i>
-                            Adicionar
-                        </button>
+            <div id="menu" class="w-full">
+                <main id="hamburgers" class="grid md:grid-cols-2 gap-8">
+
+                    <!-- Menu Item -->
+                    
+                    <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/hamb-2.png" alt="Iron Duke Burger" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-2.png">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Iron Duke Burger</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Smash de Angus flamejante, queijo cheddar fundido, picles rústico e bacon dourado: forjado para os lordes da fumaça e do ferro.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 18,10</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Iron Duke Burger" data-price="18.20">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="flex gap-2">
-                <img src="./assets/hamb-1.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                <div>
-                    <h3 class="text-2xl text-yellow-600">Hamburger Classic</h3>
-                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
-                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                        <p class="font-bold">R$ 22,10</p>
-                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                        data-name="Hamburguer Classic"
-                        data-price="22.10"
-                        >
-                            <i class="fas fa-plus text-white"></i>
-                            Adicionar
-                        </button>
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/hamb-1.png" alt="Steam Rider" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Steam Rider</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Blend bovino nobre, cebola caramelizada no bourbon, queijo brie maçaricado e maionese da casa: feito para cowboys do futuro.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 21,90</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Steam Rider" data-price="21.90">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="flex gap-2">
-                <img src="./assets/hamb-5.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                <div>
-                    <h3 class="text-2xl text-yellow-600">Hamburguer Wropper</h3>
-                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
-                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                        <p class="font-bold">R$ 19,60</p>
-                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                        data-name="Hamburguer Wropper"
-                        data-price="19.60"
-                        >
-                            <i class="fas fa-plus text-white"></i>
-                            Adicionar
-                        </button>
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/hamb-3.png" alt="Rusty Sheriff" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Rusty Sheriff</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Carne smash com crosta crocante, cheddar, molho barbecue escuro, pimenta defumada e coroa de onion rings: a lei do Velho Oeste.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 22,50</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Rusty Sheriff" data-price="22.50">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="flex gap-2">
-                <img src="./assets//hamb-4.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                <div>
-                    <h3 class="text-2xl text-yellow-600">Hamburguer X-Double</h3>
-                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
-                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                        <p class="font-bold">R$ 23,10</p>
-                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                        data-name="Hamburguer X-Double"
-                        data-price="23.10"
-                        >
-                            <i class="fas fa-plus text-white"></i>
-                            Adicionar
-                        </button>
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/hamb-4.png" alt="Clockwork Angus" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Clockwork Angus</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Duo de cheddar envelhecido, molho de pimenta verde, pancetta crocante e folhas rústicas: precisão britânica com alma selvagem.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 24,90</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Clockwork Angus" data-price="24.90">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="flex gap-2">
-                <img src="./assets/hamb-7.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                <div>
-                    <h3 class="text-2xl text-yellow-600">Hamburguer X-Wrooper</h3>
-                    <p class="text-lg text-gray-500">Delicioso hamburguer com carne bovina, queijo, ovo, tomate, alface e cebola.</p>
-                    <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                        <p class="font-bold">R$ 24,10</p>
-                        <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                        data-name="Hamburguer Loopdall"
-                        data-price="24.10"
-                        >
-                            <i class="fas fa-plus text-white"></i>
-                            Adicionar
-                        </button>
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/hamb-5.png" alt="Boiler Room Smash" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Boiler Room Smash</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Smash suculento, cheddar farto e creme picante da casa com toque de carvão: direto das caldeiras para o teu apetite voraz.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 19,90</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Boiler Room Smash" data-price="19.90">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </main>
 
-        <!--Seção de bebidas-->
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/hamb-6.png" alt="Bronze Maverick" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Bronze Maverick</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Blend artesanal, queijo gouda derretido, relish de pepino agridoce e aioli defumado: criado para forasteiros com alma livre.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 20,60</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Bronze Maverick" data-price="20.60">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="mx-auto  max-w-7xl px-2 my-2">
-            <h2 class="text-6xl text-zinc-950 text-center font-bold mt-12">Bebidas</h2>
-        </div>
-        <!--Grid Bebidas-->
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/hamb-7.png" alt="Wild Gear Deluxe" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Wild Gear Deluxe</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Carne temperada com especiarias, queijo muçarela esticando, farofa de bacon e molho de mostarda rústica: brutal como o Oeste.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 23,70</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Wild Gear Deluxe" data-price="23.70">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-        <div id="menu">
-            <main id="drinks" class="w-full h-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 px-6 mb-16 mt-20 max-w-screen-xl mx-auto">
-                
-                <div class="flex gap-2">
-                    <img src="./assets/refri-2.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                    <div class="w-full">
-                        <h3 class="text-2xl text-yellow-600">Refri Guaraná</h3>
-                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
-                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                            <p class="font-bold">R$6,10</p>
-                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                            data-name="Refri Gurana"
-                            data-price="6.10"
-                            >
-                                <i class="fas fa-plus text-white"></i>
-                                Adicionar
-                            </button>
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/hamb-8.png" alt="Golden Rail Road" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Golden Rail Road</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Smash dourado, queijo americano, maionese trufada e pickles vintage: inspirado nas aventuras sobre trilhos e fumaça.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 25,00</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Golden Rail Road" data-price="25.00">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="flex gap-2 w-full">
-                    <img src="./assets/refri-1.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                    <div class="w-full">
-                        <h3 class="text-2xl text-yellow-600">Refri Cola</h3>
-                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
-                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                            <p class="font-bold">R$ 5,10</p>
-                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                            data-name="Refri Cola"
-                            data-price="5.10"
-                            >
-                                <i class="fas fa-plus text-white"></i>
-                                Adicionar
-                            </button>
+                <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/refri-1.png" alt="Steam Spark" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Steam Spark</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Tônico energizante cítrico com alma elétrica — feito para manter pistões e corações pulsando madrugada adentro.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 10,00</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Steam Spark" data-price="10.00">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/refri-2.png" alt="Copper Bolt" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Copper Bolt</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Mistura borbulhante de frutas tropicais, criada nos laboratórios de alquimia do Oeste — viva o choque dourado!</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 10,00</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Copper Bolt" data-price="10.00">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/refri3.png" alt="Rust Cola" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Rust Cola</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Cola encorpada com notas herbais e final tostado — inspirada nas locomotivas que desbravaram o Velho Continente.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 10,00</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Rust Cola" data-price="10.00">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/Refri4.png" alt="Gear Twist" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Gear Twist</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Refresco gaseificado de limão com gengibre cítrico — para lubrificar engrenagens e reviver aventureiros desgastados.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 10,00</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Gear Twist" data-price="10.00">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/suco1.png" alt="Sun Forge" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Sun Forge</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Suco de laranja espremido na hora — como se o próprio sol tivesse sido fundido para refrescar guerreiros cansados.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 10,00</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Sun Forge" data-price="10.00">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex space-x-4 card-hover">
+                        <img src="./assets/suco2.png" alt="Purple Engine" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Purple Engine</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Suco de uva denso e aromático — combustível real para máquinas antigas e histórias que jamais enferrujam.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-accent">R$ 10,00</span>
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Purple Engine" data-price="10.00">
+                                    <i class="fas fa-plus mr-2"></i>Adicionar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex gap-2">
-                    <img src="./assets/refri3.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                    <div class="w-full">
-                        <h3 class="text-2xl text-yellow-600">Refri Pepsi</h3>
-                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
-                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                            <p class="font-bold">R$7,40</p>
-                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                            data-name="Refri Pespi"
-                            data-price="7.40"
-                            >
-                                <i class="fas fa-plus text-white"></i>
-                                Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-2">
-                    <img src="./assets/suco1.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                    <div class="w-full">
-                        <h3 class="text-2xl text-yellow-600">Suco Natural</h3>
-                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
-                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                            <p class="font-bold">R$6,00</p>
-                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                            data-name="Suco Natural"
-                            data-price="6.00"
-                            >
-                                <i class="fas fa-plus text-white"></i>
-                                Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-2">
-                    <img src="./assets/suco2.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                    <div class="w-full">
-                        <h3 class="text-2xl text-yellow-600">Suco Arficial</h3>
-                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
-                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                            <p class="font-bold">R$4,20</p>
-                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                            data-name="Suco Arficial"
-                            data-price="4.20"
-                            >
-                                <i class="fas fa-plus text-white"></i>
-                                Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-2">
-                    <img src="./assets/Refri4.png" alt="img_burger" class="w-32 h-32 rounded-lg shadow-lg hover:scale-110 duration-200 hover:scale-110 hover:-rotate-2 duration-200">
-                    <div class="w-full">
-                        <h3 class="text-2xl text-yellow-600">Ernegético</h3>
-                        <p class="text-lg text-gray-500">Delicioso Splash pronto para a sua degustação.</p>
-                        <div class=" bg-transparent w-full  h-auto flex items-center gap-2 justify-between mt-4">
-                            <p class="font-bold">R$10,00</p>
-                            <button class="bg-zinc-800 rounded-lg px-4 py-2 text-white add-to-cart-btn"
-                            data-name="Ernegético"
-                            data-price="10.00"
-                            >
-                                <i class="fas fa-plus text-white"></i>
-                                Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     </div>
-   
-    <div class="fixed bottom-4 right-4 flex md:hidden">
-        <button class="flex items-center font-bold gap-3 bg-yellow-500 text-zinc-900 px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 transition" id="cart-btn2">
-            <i class="fas fa-shopping-cart text-lg"></i>
-            (<span id="cart-count2">0</span>) Carrinho
+
+    <!-- About Section -->
+    <div id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        Nossa <span class="text-gradient">História</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+                        Desde 2020, a The House se dedica a criar hambúrgueres artesanais únicos, 
+                        utilizando apenas ingredientes frescos e de alta qualidade.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Nossa paixão pela gastronomia e pelo atendimento de excelência nos motiva 
+                        a entregar sempre o melhor para nossos clientes. Cada hambúrguer é preparado 
+                        com carinho e atenção aos detalhes.
+                    </p>
+                    <div class="flex space-x-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-accent mb-2">5+</div>
+                            <div class="text-gray-600">Anos de experiência</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-accent mb-2">10k+</div>
+                            <div class="text-gray-600">Clientes satisfeitos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-accent mb-2">4.9</div>
+                            <div class="text-gray-600">Avaliação média</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl p-8 aspect-square flex items-center justify-center">
+                        <i class="fas fa-hamburger text-8xl text-accent/30"></i>
+                    </div>
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-accent rounded-full flex items-center justify-center accent-glow">
+                        <i class="fas fa-heart text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    O que dizem nossos <span class="text-gradient">Clientes</span>
+                </h2>
+                <p class="text-xl text-gray-600">Depoimentos reais de quem já provou nossos hambúrgueres</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Maria Silva</h4>
+                            <div class="flex text-accent text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Melhor hambúrguer da cidade! Ingredientes frescos e entrega super rápida. Recomendo muito!"</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">João Santos</h4>
+                            <div class="flex text-accent text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Sabor incrível e atendimento excepcional. Virei cliente fiel da Sweet Burger!"</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Ana Costa</h4>
+                            <div class="flex text-accent text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Qualidade excepcional! Os hambúrgueres são realmente artesanais e deliciosos."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="py-20 bg-black text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Pronto para uma experiência <span class="text-gradient">única</span>?
+            </h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Faça seu pedido agora e descubra por que somos a hamburgueria favorita da cidade
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#hamburgers" class="bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-full font-medium transition-colors inline-flex items-center justify-center space-x-2">
+                    <span>Ver Menu Completo</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="tel:+5591999999999" class="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-8 py-4 rounded-full font-medium transition-colors inline-flex items-center justify-center space-x-2">
+                    <i class="fas fa-phone"></i>
+                    <span>Fazer Pedido</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Cart Button -->
+    <div class="fixed bottom-6 right-6 md:hidden z-40">
+        <button class="bg-accent hover:bg-accent-dark text-white p-4 rounded-full shadow-xl accent-glow" id="cart-btn2">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-shopping-cart text-lg"></i>
+                <span class="bg-black text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold" id="cart-count2">0</span>
+            </div>
         </button>
     </div>
-    <!--Modal-->
-    <div id="cart-modal" class="bg-black/50 h-full w-full fixed top-0 left-0 z-[99] hidden items-center justify-center">
-        <div class="bg-white rounded-lg p-6 w-full max-w-lg shadow-xl transform transition-all duration-300">
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[99] hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl transform transition-all duration-300">
             
-            <!-- Título do Modal -->
-            <h2 class="text-center font-bold text-2xl mb-4 text-zinc-900">Meu Carrinho</h2>
-    
-            <!-- Itens do Carrinho -->
-            <div id="cart-items-container" class="flex flex-col gap-4 overflow-y-auto max-h-60 mb-4">
-                <!-- Os itens serão adicionados dinamicamente aqui -->
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-gray-100">
+                <h2 class="text-2xl font-bold text-center">Meu Carrinho</h2>
             </div>
     
-            <!-- Total do Carrinho -->
-            <div class="flex justify-between text-xl font-semibold text-zinc-900">
-                <p>Total:</p>
-                <span id="cart-total">R$ 0.00</span>
+            <!-- Cart Items -->
+            <div id="cart-items-container" class="p-6 max-h-80 overflow-y-auto">
+                <!-- Cart items will be added here dynamically -->
             </div>
     
-            <!-- Endereço de Entrega -->
-            <div class="mt-4">
-                <p class="font-semibold text-zinc-800">Endereço de Entrega</p>
-                <input type="text" placeholder="Digite o seu endereço completo" id="address" class="w-full border-2 border-zinc-300 rounded-lg p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300">
-                <p class="text-red-600 text-sm hidden mt-2" id="address-warn">Digite o seu endereço completo</p>
+            <!-- Cart Total -->
+            <div class="px-6 py-4 border-t border-gray-100">
+                <div class="flex justify-between items-center text-xl font-bold">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-accent">R$ 0,00</span>
+                </div>
             </div>
     
-            <!-- Ações -->
-            <div class="flex justify-between mt-6 gap-4">
-                <!-- Botão Finalizar Compra -->
-                <button class="w-full bg-yellow-500 text-zinc-900 font-bold py-3 rounded-lg shadow-md hover:bg-yellow-600 transition duration-300" id="checkout-btn">
+            <!-- Delivery Address -->
+            <div class="px-6 pb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Endereço de Entrega</label>
+                <input type="text" 
+                       placeholder="Digite seu endereço completo" 
+                       id="address" 
+                       class="w-full border-2 border-gray-200 rounded-xl p-4 focus:outline-none focus:border-accent transition-colors">
+                <p class="text-red-500 text-sm mt-2 hidden" id="address-warn">Por favor, digite seu endereço completo</p>
+            </div>
+    
+            <!-- Modal Actions -->
+            <div class="p-6 flex space-x-4">
+                <button class="flex-1 bg-accent hover:bg-accent-dark text-white py-4 rounded-xl font-medium transition-colors" id="checkout-btn">
                     Finalizar Compra
                 </button>
-    
-                <!-- Botão Cancelar -->
-                <button class="w-full bg-transparent text-zinc-900 border-2 border-zinc-900 py-3 rounded-lg hover:bg-zinc-200 transition duration-300" id="close-modal-btn">
-                    Cancelar
+                <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-900 py-4 rounded-xl font-medium transition-colors" id="close-modal-btn">
+                    Fechar
                 </button>
             </div>
         </div>
     </div>
-    
 
-    <!--Footer-->
-    <footer class="flex flex-col items-center bg-zinc-800 text-white w-full py-6 md:py-10 px-6">
-        <div class="flex flex-wrap justify-center gap-12 md:gap-8 lg:gap-16 max-w-7xl text-center md:text-left">
-            <div class="max-w-xs space-y-2">
-                <h3 class="text-2xl font-bold text-yellow-500">Sweet Burger</h3>
-                <p class="text-gray-300">Hambúrgueres artesanais feitos com os melhores ingredientes.</p>
-            </div>
-            <div class="max-w-xs space-y-2">
-                <h3 class="text-xl font-semibold text-yellow-500">Horário de Funcionamento</h3>
-                <p class="text-gray-300">Seg-Sáb: 18:00 - 22:00</p>
-                <p class="text-gray-300">Domingo: Fechado</p>
-            </div>
-            <div class="max-w-xs space-y-2">
-                <h3 class="text-xl font-semibold text-yellow-500">Contato</h3>
-                <p class="text-gray-300 flex items-center justify-center md:justify-start"><i class="fas fa-phone-alt mr-2"></i> (91) 99999-9999</p>
-                <p class="text-gray-300 flex items-center justify-center md:justify-start"><i class="fas fa-map-marker-alt mr-2"></i> Visconde de Souza Franco, Umarizal - PA</p>
+    <!-- Footer -->
+    <footer class="bg-zinc-950 text-white">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-4 gap-8">
+                
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                            <i class="fas fa-hamburger text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">The House</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Hambúrgueres artesanais premium com ingredientes selecionados desde 2020.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Menu -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Menu</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#hamburgers" class="hover:text-accent transition-colors">Hambúrgueres</a></li>
+                        <li><a href="#drinks" class="hover:text-accent transition-colors">Bebidas</a></li>
+                        <li><a href="#about" class="hover:text-accent transition-colors">Sobre Nós</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Horários -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Horários</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <p>Segunda - Sábado</p>
+                        <p class="text-accent font-medium">18:00 - 22:00</p>
+                        <p>Domingo: Fechado</p>
+                    </div>
+                </div>
+                
+                <!-- Contato -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contato</h3>
+                    <div class="space-y-3 text-gray-400">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-accent"></i>
+                            <span>(91) 99999-9999</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-map-marker-alt text-accent mt-1"></i>
+                            <span>Visconde de Souza Franco<br>Umarizal - PA</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="w-full border-t border-gray-700 mt-8 pt-6 text-center">
-            <p class="text-gray-400 text-sm">&copy; 2025 Sweet Burger. Todos os direitos reservados.</p>
-        </div>
-    
-        <div class="flex gap-6 mt-6">
-            <a href="#" class="text-2xl text-gray-400 hover:text-yellow-500 transition"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-2xl text-gray-400 hover:text-yellow-500 transition"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="text-2xl text-gray-400 hover:text-yellow-500 transition"><i class="fab fa-whatsapp"></i></a>
+        <!-- Footer Bottom -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <div class="text-center text-gray-400">
+                    <p>&copy; 2025 Sweet Burger. Todos os direitos reservados.</p>
+                </div>
+            </div>
         </div>
     </footer>
-    
+
+    <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js"></script>
     <script src="filter.js"></script>
     <script src="menu.js"></script>

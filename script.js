@@ -84,8 +84,9 @@ function updateCartModal(){
         cartItemElement.innerHTML = `
             <div class="flex items-center justify-between">
                 <div>
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-lg object-cover">
                     <p class="font-medium">${item.name}</p>
-                    <p>Qtd. ${item.quantity}</p>  
+                    <p>Quantidade. ${item.quantity}</p>  
                     <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p> 
                 </div>
             </div>
