@@ -74,16 +74,132 @@
             cursor: pointer;
             font-weight: bold;
         }
+
+        /* Adicione ao seu CSS */
+        @keyframes cartBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .cart-animation {
+            animation: cartBounce 0.5s ease;
+        }
+
+        .item-added {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Adicione ao seu CSS */
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .quantity-value {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* Sidebar Mobile */
+        #mobile-sidebar {
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #mobile-sidebar.open {
+            transform: translateX(0);
+        }
+
+        /* Transição suave para a sidebar */
+        #mobile-sidebar, #sidebar-overlay {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Estilo para links ativos na sidebar */
+        #mobile-sidebar a.active {
+            background-color: rgba(255, 107, 53, 0.1);
+            color: #FF6B35;
+        }
+
+        /* Garante que a sidebar fique acima de outros elementos */
+        .z-40 {
+            z-index: 40;
+        }
+
+        .z-30 {
+            z-index: 30;
+        }
+
+        /* Estilos para o video background */
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+        }
+
+        /* Garante que o conteúdo fique acima do vídeo */
+        header > div {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Melhora a legibilidade do texto sobre o vídeo */
+        .text-gradient {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Fallback para navegadores que não suportam video */
+        .no-video header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        }
     </style>
 </head>
 
 <body class="bg-white text-gray-900 font-inter">
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 z-50">
+   <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center">
@@ -110,25 +226,70 @@
                 <button id="menu-toggle" class="md:hidden p-2">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
-        
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-gray-100">
-                <div class="flex flex-col space-y-3">
-                    <a href="#home" class="text-gray-700 hover:text-accent transition-colors py-2">Inicio</a>
-                    <a href="#hamburgers" class="text-gray-700 hover:text-accent transition-colors py-2">Menu</a>
-                    <a href="#drinks" class="text-gray-700 hover:text-accent transition-colors py-2">Bebidas</a>
-                    <a href="#about" class="text-gray-700 hover:text-accent transition-colors py-2">Sobre</a>
-                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <!-- Sidebar Mobile -->
+    <div id="mobile-sidebar" class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col h-full">
+            <!-- Cabeçalho da Sidebar -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center">
+                        <i class="fas fa-hamburger text-accent text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-black">The House</span>
+                </div>
+                <button id="close-sidebar" class="p-2 text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Conteúdo da Sidebar -->
+            <div class="flex-1 overflow-y-auto p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#home" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-accent transition-colors">Home</a>
+                    </li>
+                    <li>
+                        <a href="#hamburgers" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-accent transition-colors">Menu</a>
+                    </li>
+                    <li>
+                        <a href="#drinks" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-accent transition-colors">Bebidas</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-accent transition-colors">Sobre</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Rodapé da Sidebar (opcional) -->
+            <div class="p-4 border-t border-gray-200">
+                <button href="tel:+5591999999999" class="w-full flex items-center justify-center space-x-2 bg-black text-white px-4 py-3 rounded-full hover:bg-gray-800 transition-colors" id="sidebar-cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Carrinho</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay para quando a sidebar estiver aberta -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+   <!-- Hero Section com Video Background -->
+    <header class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Video Background -->
+        <div class="absolute inset-0 z-0">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                <source src="https://v1.pinimg.com/videos/mc/720p/ac/3d/61/ac3d61d379caa16d664adbc7e4740141.mp4" type="video/mp4">
+                <!-- Fallback para caso o vídeo não carregue -->
+                <div class="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800"></div>
+            </video>
+            <!-- Overlay escuro para melhor legibilidade do texto -->
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
         
+        <!-- Conteúdo do Hero (mantido igual) -->
         <div class="text-center max-w-4xl mx-auto px-6 relative z-10">
             <div class="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-8 accent-glow">
                 <i class="fas fa-hamburger text-white text-3xl"></i>
@@ -217,215 +378,423 @@
         </div>
     </div>
 
+    <!-- Combos Recomendados -->
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-gradient">Combos</span> Recomendados
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Combos perfeitos para aproveitar ao máximo sua experiência
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Combo 1 -->
+            <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img src="./assets/hamb-1.png" alt="Combo Steam Rider" class="w-20 h-20 rounded-xl object-cover">
+                        <img src="./assets/refri-1.png" alt="Bebida" class="w-20 h-20 rounded-xl object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Combo Steam Rider</h3>
+                    <p class="text-gray-600 text-sm mb-4">Hambúrguer Steam Rider + Bebida Steam Spark</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-accent">R$ 29,90</span>
+                        <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                data-name="Combo Steam Rider" 
+                                data-price="29.90"
+                                data-image="./assets/hamb-1.png">
+                            <i class="fas fa-plus mr-2"></i>Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Combo 2 -->
+            <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img src="./assets/hamb-3.png" alt="Combo Rusty Sheriff" class="w-20 h-20 rounded-xl object-cover">
+                        <img src="./assets/refri3.png" alt="Bebida" class="w-20 h-20 rounded-xl object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Combo Rusty Sheriff</h3>
+                    <p class="text-gray-600 text-sm mb-4">Hambúrguer Rusty Sheriff + Bebida Rust Cola</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-accent">R$ 31,50</span>
+                        <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                data-name="Combo Rusty Sheriff" 
+                                data-price="31.50"
+                                data-image="./assets/hamb-3.png">
+                            <i class="fas fa-plus mr-2"></i>Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Combo 3 -->
+            <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img src="./assets/hamb-5.png" alt="Combo Boiler Room" class="w-20 h-20 rounded-xl object-cover">
+                        <img src="./assets/suco1.png" alt="Bebida" class="w-20 h-20 rounded-xl object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Combo Boiler Room</h3>
+                    <p class="text-gray-600 text-sm mb-4">Hambúrguer Boiler Room Smash + Suco Sun Forge</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-accent">R$ 28,90</span>
+                        <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                data-name="Combo Boiler Room" 
+                                data-price="28.90"
+                                data-image="./assets/hamb-5.png">
+                            <i class="fas fa-plus mr-2"></i>Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Combo 4 -->
+            <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img src="./assets/hamb-7.png" alt="Combo Wild Gear" class="w-20 h-20 rounded-xl object-cover">
+                        <img src="./assets/refri-2.png" alt="Bebida" class="w-20 h-20 rounded-xl object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Combo Wild Gear</h3>
+                    <p class="text-gray-600 text-sm mb-4">Hambúrguer Wild Gear Deluxe + Bebida Copper Bolt</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-accent">R$ 32,70</span>
+                        <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                data-name="Combo Wild Gear" 
+                                data-price="32.70"
+                                data-image="./assets/hamb-7.png">
+                            <i class="fas fa-plus mr-2"></i>Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Combo 5 -->
+            <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img src="./assets/hamb-2.png" alt="Combo Iron Duke" class="w-20 h-20 rounded-xl object-cover">
+                        <img src="./assets/suco2.png" alt="Bebida" class="w-20 h-20 rounded-xl object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Combo Iron Duke</h3>
+                    <p class="text-gray-600 text-sm mb-4">Hambúrguer Iron Duke + Suco Purple Engine</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-accent">R$ 27,10</span>
+                        <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                data-name="Combo Iron Duke" 
+                                data-price="27.10"
+                                data-image="./assets/hamb-2.png">
+                            <i class="fas fa-plus mr-2"></i>Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Combo 6 (Família) -->
+            <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <img src="./assets/hamb-1.png" alt="Hambúrguer" class="w-16 h-16 rounded-xl object-cover">
+                        <img src="./assets/hamb-3.png" alt="Hambúrguer" class="w-16 h-16 rounded-xl object-cover">
+                        <img src="./assets/refri-1.png" alt="Bebida" class="w-16 h-16 rounded-xl object-cover">
+                        <img src="./assets/refri3.png" alt="Bebida" class="w-16 h-16 rounded-xl object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Combo Família</h3>
+                    <p class="text-gray-600 text-sm mb-4">2x Steam Rider + 2x Rusty Sheriff + 2 Bebidas</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-accent">R$ 89,90</span>
+                        <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                data-name="Combo Família" 
+                                data-price="89.90"
+                                data-image="./assets/hamb-1.png">
+                            <i class="fas fa-plus mr-2"></i>Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
     <!-- Menu Section -->
     <div class="py-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                    Nosso <span class="text-gradient">Menu</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Hambúrgueres artesanais preparados com ingredientes frescos e selecionados
-                </p>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                Nosso <span class="text-gradient">Menu</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Hambúrgueres artesanais e bebidas refrescantes preparados com ingredientes frescos
+            </p>
+            
+            <!-- Adicione esses botões de filtro -->
+       
+            <div class="flex justify-center mt-8 space-x-4">
+                <button class="menu-filter-category px-6 py-3 rounded-full font-medium transition-all bg-black text-white" data-menu-category="all">Todos</button>
+                <button class="menu-filter-category px-6 py-3 rounded-full font-medium transition-all hover:bg-gray-100" data-menu-category="food">Pratos</button>
+                <button class="menu-filter-category px-6 py-3 rounded-full font-medium transition-all hover:bg-gray-100" data-menu-category="drinks">Bebidas</button>
+            </div>
             </div>
 
             <div id="menu" class="w-full">
                 <main id="hamburgers" class="grid md:grid-cols-2 gap-8">
 
                     <!-- Menu Item -->
-                    
                     <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
-                    <div class="p-6 flex space-x-4 card-hover">
+                    <!-- Iron Duke Burger -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="food">
                         <img src="./assets/hamb-2.png" alt="Iron Duke Burger" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-2.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Iron Duke Burger</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Smash de Angus flamejante, queijo cheddar fundido, picles rústico e bacon dourado: forjado para os lordes da fumaça e do ferro.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 18,10</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Iron Duke Burger" data-price="18.20">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Iron Duke Burger" 
+                                        data-price="18.20"
+                                        data-image="./assets/hamb-2.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/hamb-1.png" alt="Steam Rider" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Steam Rider -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="food">
+                        <img src="./assets/hamb-1.png" alt="Steam Rider" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-1.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Steam Rider</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Blend bovino nobre, cebola caramelizada no bourbon, queijo brie maçaricado e maionese da casa: feito para cowboys do futuro.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 21,90</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Steam Rider" data-price="21.90">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Steam Rider" 
+                                        data-price="21.90"
+                                        data-image="./assets/hamb-1.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/hamb-3.png" alt="Rusty Sheriff" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Rusty Sheriff -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="food">
+                        <img src="./assets/hamb-3.png" alt="Rusty Sheriff" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-3.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Rusty Sheriff</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Carne smash com crosta crocante, cheddar, molho barbecue escuro, pimenta defumada e coroa de onion rings: a lei do Velho Oeste.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 22,50</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Rusty Sheriff" data-price="22.50">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Rusty Sheriff" 
+                                        data-price="22.50"
+                                        data-image="./assets/hamb-3.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/hamb-4.png" alt="Clockwork Angus" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Clockwork Angus -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="food">
+                        <img src="./assets/hamb-4.png" alt="Clockwork Angus" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-4.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Clockwork Angus</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Duo de cheddar envelhecido, molho de pimenta verde, pancetta crocante e folhas rústicas: precisão britânica com alma selvagem.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 24,90</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Clockwork Angus" data-price="24.90">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Clockwork Angus" 
+                                        data-price="24.90"
+                                        data-image="./assets/hamb-4.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/hamb-5.png" alt="Boiler Room Smash" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Boiler Room Smash -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="food">
+                        <img src="./assets/hamb-5.png" alt="Boiler Room Smash" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-5.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Boiler Room Smash</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Smash suculento, cheddar farto e creme picante da casa com toque de carvão: direto das caldeiras para o teu apetite voraz.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 19,90</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Boiler Room Smash" data-price="19.90">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Boiler Room Smash" 
+                                        data-price="19.90"
+                                        data-image="./assets/hamb-5.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/hamb-6.png" alt="Bronze Maverick" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Bronze Maverick -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="food">
+                        <img src="./assets/hamb-6.png" alt="Bronze Maverick" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-6.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Bronze Maverick</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Blend artesanal, queijo gouda derretido, relish de pepino agridoce e aioli defumado: criado para forasteiros com alma livre.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 20,60</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Bronze Maverick" data-price="20.60">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Bronze Maverick" 
+                                        data-price="20.60"
+                                        data-image="./assets/hamb-6.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/hamb-7.png" alt="Wild Gear Deluxe" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Wild Gear Deluxe -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="food">
+                        <img src="./assets/hamb-7.png" alt="Wild Gear Deluxe" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-7.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Wild Gear Deluxe</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Carne temperada com especiarias, queijo muçarela esticando, farofa de bacon e molho de mostarda rústica: brutal como o Oeste.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 23,70</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Wild Gear Deluxe" data-price="23.70">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Wild Gear Deluxe" 
+                                        data-price="23.70"
+                                        data-image="./assets/hamb-7.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/hamb-8.png" alt="Golden Rail Road" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Golden Rail Road -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="food">
+                        <img src="./assets/hamb-8.png" alt="Golden Rail Road" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/hamb-8.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Golden Rail Road</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Smash dourado, queijo americano, maionese trufada e pickles vintage: inspirado nas aventuras sobre trilhos e fumaça.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 25,00</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Golden Rail Road" data-price="25.00">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Golden Rail Road" 
+                                        data-price="25.00"
+                                        data-image="./assets/hamb-8.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Bebidas -->
                 <div class="bg-white rounded-2xl shadow-sm card-hover overflow-hidden border border-gray-100">
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/refri-1.png" alt="Steam Spark" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Steam Spark -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="drinks">
+                        <img src="./assets/refri-1.png" alt="Steam Spark" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/refri-1.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Steam Spark</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Tônico energizante cítrico com alma elétrica — feito para manter pistões e corações pulsando madrugada adentro.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 10,00</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Steam Spark" data-price="10.00">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Steam Spark" 
+                                        data-price="10.00"
+                                        data-image="./assets/refri-1.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/refri-2.png" alt="Copper Bolt" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Copper Bolt -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="drinks">
+                        <img src="./assets/refri-2.png" alt="Copper Bolt" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/refri-2.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Copper Bolt</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Mistura borbulhante de frutas tropicais, criada nos laboratórios de alquimia do Oeste — viva o choque dourado!</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 10,00</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Copper Bolt" data-price="10.00">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Copper Bolt" 
+                                        data-price="10.00"
+                                        data-image="./assets/refri-2.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/refri3.png" alt="Rust Cola" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Rust Cola -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="drinks">
+                        <img src="./assets/refri3.png" alt="Rust Cola" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/refri3.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Rust Cola</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Cola encorpada com notas herbais e final tostado — inspirada nas locomotivas que desbravaram o Velho Continente.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 10,00</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Rust Cola" data-price="10.00">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Rust Cola" 
+                                        data-price="10.00"
+                                        data-image="./assets/refri3.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/Refri4.png" alt="Gear Twist" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Gear Twist -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="drinks">
+                        <img src="./assets/Refri4.png" alt="Gear Twist" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/Refri4.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Gear Twist</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Refresco gaseificado de limão com gengibre cítrico — para lubrificar engrenagens e reviver aventureiros desgastados.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 10,00</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Gear Twist" data-price="10.00">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Gear Twist" 
+                                        data-price="10.00"
+                                        data-image="./assets/Refri4.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/suco1.png" alt="Sun Forge" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Sun Forge -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="drinks">
+                        <img src="./assets/suco1.png" alt="Sun Forge" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/suco1.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Sun Forge</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Suco de laranja espremido na hora — como se o próprio sol tivesse sido fundido para refrescar guerreiros cansados.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 10,00</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Sun Forge" data-price="10.00">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Sun Forge" 
+                                        data-price="10.00"
+                                        data-image="./assets/suco1.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 flex space-x-4 card-hover">
-                        <img src="./assets/suco2.png" alt="Purple Engine" class="w-24 h-24 rounded-xl object-cover bg-gray-100">
+                    <!-- Purple Engine -->
+                    <div class="p-6 flex space-x-4 card-hover" data-category="drinks">
+                        <img src="./assets/suco2.png" alt="Purple Engine" class="w-24 h-24 rounded-xl object-cover bg-gray-100" data-image="./assets/suco2.png">
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">Purple Engine</h3>
                             <p class="text-gray-600 text-sm mb-4 leading-relaxed">Suco de uva denso e aromático — combustível real para máquinas antigas e histórias que jamais enferrujam.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-accent">R$ 10,00</span>
-                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" data-name="Purple Engine" data-price="10.00">
+                                <button class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors add-to-cart-btn" 
+                                        data-name="Purple Engine" 
+                                        data-price="10.00"
+                                        data-image="./assets/suco2.png">
                                     <i class="fas fa-plus mr-2"></i>Adicionar
                                 </button>
                             </div>
@@ -471,7 +840,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl p-8 aspect-square flex items-center justify-center">
+                    <div class="bg-[url('https://i.pinimg.com/1200x/78/83/d8/7883d80dae7b57ac5844d4a334c428df.jpg')] bg-cover bg-center rounded-3xl p-8 aspect-square flex items-center justify-center">
                         <i class="fas fa-hamburger text-8xl text-accent/30"></i>
                     </div>
                     <div class="absolute -top-4 -right-4 w-24 h-24 bg-accent rounded-full flex items-center justify-center accent-glow">
@@ -708,5 +1077,6 @@
     <script src="script.js"></script>
     <script src="filter.js"></script>
     <script src="menu.js"></script>
+    <script src="video.js"></script>
 </body>
 </html>

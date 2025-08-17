@@ -40,3 +40,29 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Filtro Por Categoria
+
+document.querySelectorAll('.menu-filter-category').forEach(button => {
+    button.addEventListener('click', function() {
+        const category = this.getAttribute('data-menu-category');
+        
+        // Atualiza o botão ativo
+        document.querySelectorAll('.menu-filter-category').forEach(btn => {
+            btn.classList.remove('bg-black', 'text-white');
+            btn.classList.add('hover:bg-gray-100');
+        });
+        
+        this.classList.add('bg-black', 'text-white');
+        this.classList.remove('hover:bg-gray-100');
+        
+        // Filtra apenas os itens do menu (comidas e bebidas)
+        document.querySelectorAll('#menu [data-category]').forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
